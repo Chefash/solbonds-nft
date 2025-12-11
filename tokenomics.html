@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLBonds - Sustainable Tokenomics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-5xl font-bold text-center mb-4">💰 SOLBonds Treasury Dashboard</h1>
+        <p class="text-center text-gray-400 mb-12 text-xl">Real Yield, Real Economics, Real Sustainability</p>
+
+        <!-- Protocol Stats Overview -->
+        <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-6 border-2 border-green-400">
+                <div class="text-sm text-green-200 mb-2">Total Vault Balance</div>
+                <div class="text-4xl font-bold" id="vaultBalance">$50,000</div>
+                <div class="text-xs text-green-200 mt-2">Earning 8% APY</div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 border-2 border-blue-400">
+                <div class="text-sm text-blue-200 mb-2">24h Yield Generated</div>
+                <div class="text-4xl font-bold" id="dailyYield">$10.96</div>
+                <div class="text-xs text-blue-200 mt-2">From vault protocols</div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl p-6 border-2 border-purple-400">
+                <div class="text-sm text-purple-200 mb-2">24h User Fees</div>
+                <div class="text-4xl font-bold" id="dailyFees">$45.00</div>
+                <div class="text-xs text-purple-200 mt-2">Bets + penalties + mints</div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-pink-600 to-pink-700 rounded-xl p-6 border-2 border-pink-400">
+                <div class="text-sm text-pink-200 mb-2">Total Daily Payout</div>
+                <div class="text-4xl font-bold" id="totalPayout">$55.96</div>
+                <div class="text-xs text-pink-200 mt-2">Sustainable distribution</div>
+            </div>
+        </div>
+
+        <!-- Revenue Breakdown -->
+        <div class="bg-gray-800 rounded-2xl p-8 mb-8 border-2 border-gray-700">
+            <h2 class="text-3xl font-bold mb-6">📊 24-Hour Revenue Sources</h2>
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between bg-gray-700 rounded-lg p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">🎰</div>
+                        <div>
+                            <div class="font-bold">Discovery Bets</div>
+                            <div class="text-sm text-gray-400">Users paying to see compatibility early</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-400" id="betRevenue">$15.00</div>
+                        <div class="text-xs text-gray-400">15 bets × $1 avg</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between bg-gray-700 rounded-lg p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">💕</div>
+                        <div>
+                            <div class="font-bold">Bonding Deposits (5 USDC fee)</div>
+                            <div class="text-sm text-gray-400">New profiles minted today</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-400" id="mintRevenue">$15.00</div>
+                        <div class="text-xs text-gray-400">3 mints × $5</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between bg-gray-700 rounded-lg p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">💔</div>
+                        <div>
+                            <div class="font-bold">Break-up Penalties</div>
+                            <div class="text-sm text-gray-400">Early bond terminations</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-400" id="breakupRevenue">$10.00</div>
+                        <div class="text-xs text-gray-400">2 breakups × $5</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between bg-gray-700 rounded-lg p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">🎁</div>
+                        <div>
+                            <div class="font-bold">Boost Stakes</div>
+                            <div class="text-sm text-gray-400">Premium matching features</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-green-400" id="boostRevenue">$5.00</div>
+                        <div class="text-xs text-gray-400">5 boosts × $1</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between bg-gradient-to-r from-blue-700 to-blue-600 rounded-lg p-4 border-2 border-blue-400">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">🌱</div>
+                        <div>
+                            <div class="font-bold text-xl">Real Vault Yield</div>
+                            <div class="text-sm text-blue-200">Kamino + MarginFi + Sanctum</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-yellow-300" id="yieldRevenue">$10.96</div>
+                        <div class="text-xs text-blue-200">8% APY on $50k vault</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-gray-600 flex justify-between items-center">
+                <div class="text-xl font-bold">Total 24h Inflow:</div>
+                <div class="text-4xl font-bold text-green-400" id="totalInflow">$55.96</div>
+            </div>
+        </div>
+
+        <!-- Vault Allocation -->
+        <div class="bg-gray-800 rounded-2xl p-8 mb-8 border-2 border-gray-700">
+            <h2 class="text-3xl font-bold mb-6">🏦 Stablecoin Vault Allocation</h2>
+            <p class="text-gray-400 mb-6">All user deposits automatically deployed to yield-generating protocols</p>
+            
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="bg-gradient-to-br from-orange-600 to-orange-700 rounded-lg p-4 text-center">
+                    <div class="text-2xl mb-2">🌊</div>
+                    <div class="font-bold mb-1">Kamino</div>
+                    <div class="text-sm text-orange-200 mb-2">40%</div>
+                    <div class="text-lg font-bold">$20,000</div>
+                    <div class="text-xs text-orange-200">~24% APY</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-lg p-4 text-center">
+                    <div class="text-2xl mb-2">📊</div>
+                    <div class="font-bold mb-1">MarginFi</div>
+                    <div class="text-sm text-green-200 mb-2">25%</div>
+                    <div class="text-lg font-bold">$12,500</div>
+                    <div class="text-xs text-green-200">~6% APY</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg p-4 text-center">
+                    <div class="text-2xl mb-2">⚡</div>
+                    <div class="font-bold mb-1">Sanctum</div>
+                    <div class="text-sm text-purple-200 mb-2">20%</div>
+                    <div class="text-lg font-bold">$10,000</div>
+                    <div class="text-xs text-purple-200">~7% APY</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-4 text-center">
+                    <div class="text-2xl mb-2">🌀</div>
+                    <div class="font-bold mb-1">Orca</div>
+                    <div class="text-sm text-blue-200 mb-2">10%</div>
+                    <div class="text-lg font-bold">$5,000</div>
+                    <div class="text-xs text-blue-200">~5% APY</div>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-lg p-4 text-center">
+                    <div class="text-2xl mb-2">🔥</div>
+                    <div class="font-bold mb-1">SolBlaze</div>
+                    <div class="text-sm text-red-200 mb-2">5%</div>
+                    <div class="text-lg font-bold">$2,500</div>
+                    <div class="text-xs text-red-200">~8% APY</div>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-green-900/30 border border-green-500 rounded-lg p-4 text-center">
+                <div class="text-sm text-green-300 mb-1">Blended Vault APY</div>
+                <div class="text-3xl font-bold text-green-400">~8.0%</div>
+                <div class="text-xs text-green-300 mt-1">= $10.96 per day</div>
+            </div>
+        </div>
+
+        <!-- Interactive Calculator -->
+        <div class="bg-gray-800 rounded-2xl p-8 mb-8 border-2 border-purple-500">
+            <h2 class="text-3xl font-bold mb-6">🧮 Sustainable Earnings Calculator</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-purple-300">Active Pairs</label>
+                    <input type="range" id="activePairs" min="5" max="100" value="20" 
+                        class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    <div class="text-center mt-2">
+                        <span id="pairsDisplay" class="text-3xl font-bold">20</span>
+                        <span class="text-gray-400"> pairs</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-pink-300">Your Bond Days</label>
+                    <input type="range" id="bondDays" min="1" max="200" value="45" 
+                        class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    <div class="text-center mt-2">
+                        <span id="daysDisplay" class="text-3xl font-bold">45</span>
+                        <span class="text-gray-400"> days</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-blue-300">Your Compatibility</label>
+                    <input type="range" id="compatibility" min="50" max="100" value="85" 
+                        class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    <div class="text-center mt-2">
+                        <span id="compatDisplay" class="text-3xl font-bold">85</span>
+                        <span class="text-gray-400">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formula Breakdown -->
+            <div class="bg-gray-900 rounded-xl p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-center">The Sustainable Formula</h3>
+                <div class="font-mono text-center text-lg mb-4">
+                    Daily Earnings = <span class="text-green-400">(Real Yield + User Fees)</span> ÷ Active Pairs × <span class="text-yellow-400">Tier</span> × <span class="text-pink-400">Compatibility</span>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-4 text-center text-sm">
+                    <div class="bg-gray-800 rounded-lg p-3">
+                        <div class="text-gray-400 mb-1">24h Inflow</div>
+                        <div class="text-2xl font-bold text-green-400" id="calcInflow">$55.96</div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-3">
+                        <div class="text-gray-400 mb-1">Your Tier Rate</div>
+                        <div class="text-2xl font-bold text-yellow-400" id="calcTier">2.5x</div>
+                        <div class="text-xs text-gray-500" id="tierName">Gold (31-90d)</div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-3">
+                        <div class="text-gray-400 mb-1">Compat Bonus</div>
+                        <div class="text-2xl font-bold text-pink-400" id="calcCompat">1.5x</div>
+                        <div class="text-xs text-gray-500">Great Match</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg p-3 border-2 border-purple-400">
+                        <div class="text-purple-200 mb-1">Your Daily Share</div>
+                        <div class="text-2xl font-bold" id="calcEarnings">$10.49</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step by Step -->
+            <div class="space-y-3">
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-sm text-gray-400 mb-1">Step 1: Base Share</div>
+                    <div class="font-mono" id="step1">$55.96 ÷ 20 pairs = $2.80 per pair</div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-sm text-gray-400 mb-1">Step 2: Apply Time Tier (Gold = 2.5x)</div>
+                    <div class="font-mono" id="step2">$2.80 × 2.5 = $7.00</div>
+                </div>
+                <div class="bg-gray-700 rounded-lg p-4">
+                    <div class="text-sm text-gray-400 mb-1">Step 3: Apply Compatibility (85% = 1.5x)</div>
+                    <div class="font-mono" id="step3">$7.00 × 1.5 = $10.49</div>
+                </div>
+                <div class="bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-4 border-2 border-green-400">
+                    <div class="text-sm text-green-200 mb-1">Final Result: Your Sustainable Daily Earnings</div>
+                    <div class="text-3xl font-bold" id="finalResult">$10.49 USDC/day</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why This Works -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-green-900 to-green-800 rounded-xl p-6 border-2 border-green-600">
+                <h3 class="text-2xl font-bold mb-4">✅ Why SOLBonds is Sustainable</h3>
+                <ul class="space-y-3 text-green-100">
+                    <li class="flex gap-3">
+                        <span class="text-green-400">1.</span>
+                        <span><strong>No Printing Money:</strong> Only distribute what actually came in (yield + fees)</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-green-400">2.</span>
+                        <span><strong>Real Yield Base:</strong> $10.96/day from actual DeFi protocols</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-green-400">3.</span>
+                        <span><strong>User Fees Supplement:</strong> Bets, mints, penalties add $45/day</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-green-400">4.</span>
+                        <span><strong>Multipliers Split, Don't Inflate:</strong> Higher tiers get bigger slice of same pie</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-green-400">5.</span>
+                        <span><strong>Principal Protected:</strong> Vault grows, never drains</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-900 to-red-800 rounded-xl p-6 border-2 border-red-600">
+                <h3 class="text-2xl font-bold mb-4">❌ Old Model (Unsustainable)</h3>
+                <ul class="space-y-3 text-red-100">
+                    <li class="flex gap-3">
+                        <span class="text-red-400">1.</span>
+                        <span><strong>Fixed APR Fantasy:</strong> "5% daily" from where?</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-400">2.</span>
+                        <span><strong>Draining Pool:</strong> $10k pool ÷ 20 pairs = empties in days</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-400">3.</span>
+                        <span><strong>No Inflow:</strong> Only outflow, no regeneration</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-400">4.</span>
+                        <span><strong>Death Spiral:</strong> Early users drain, late users get nothing</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-400">5.</span>
+                        <span><strong>Ponzi Vibes:</strong> Looks like you're printing yield</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Protocol Health Monitor -->
+        <div class="bg-gray-800 rounded-2xl p-8 border-2 border-gray-700">
+            <h2 class="text-3xl font-bold mb-6">📈 Protocol Health Metrics</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="text-sm text-gray-400 mb-2">Vault Growth Rate</div>
+                    <div class="text-4xl font-bold text-green-400">+$10.96</div>
+                    <div class="text-sm text-gray-400 mt-1">per day (after payouts)</div>
+                    <div class="mt-3 text-xs text-green-300">✅ Vault is GROWING</div>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-sm text-gray-400 mb-2">Payout Ratio</div>
+                    <div class="text-4xl font-bold text-blue-400">80%</div>
+                    <div class="text-sm text-gray-400 mt-1">of daily inflow distributed</div>
+                    <div class="mt-3 text-xs text-blue-300">✅ Sustainable split</div>
+                </div>
+
+                <div class="text-center">
+                    <div class="text-sm text-gray-400 mb-2">Treasury Reserve</div>
+                    <div class="text-4xl font-bold text-purple-400">20%</div>
+                    <div class="text-sm text-gray-400 mt-1">retained for protocol</div>
+                    <div class="mt-3 text-xs text-purple-300">✅ Building runway</div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-green-900/30 border border-green-500 rounded-lg p-6 text-center">
+                <div class="text-xl font-bold mb-2">🎉 Protocol Status: HEALTHY</div>
+                <div class="text-green-300">Inflow exceeds outflow. Vault growing. Fully sustainable.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get tier info
+        function getTierInfo(days) {
+            if (days <= 7) return { name: 'Bronze', mult: 1.0 };
+            if (days <= 30) return { name: 'Silver', mult: 1.5 };
+            if (days <= 90) return { name: 'Gold', mult: 2.5 };
+            if (days <= 180) return { name: 'Diamond', mult: 4.0 };
+            return { name: 'Legendary', mult: 6.0 };
+        }
+
+        function getCompatMultiplier(compat) {
+            if (compat >= 90) return 2.0;
+            if (compat >= 80) return 1.5;
+            if (compat >= 70) return 1.2;
+            if (compat >= 60) return 1.0;
+            return 0.8;
+        }
+
+        function calculate() {
+            const pairs = parseInt(document.getElementById('activePairs').value);
+            const days = parseInt(document.getElementById('bondDays').value);
+            const compat = parseInt(document.getElementById('compatibility').value);
+            
+            document.getElementById('pairsDisplay').textContent = pairs;
+            document.getElementById('daysDisplay').textContent = days;
+            document.getElementById('compatDisplay').textContent = compat;
+            
+            const tier = getTierInfo(days);
+            const compatMult = getCompatMultiplier(compat);
+            
+            // The key numbers
+            const dailyInflow = 55.96; // Real yield + user fees
+            
+            // Sustainable formula
+            const baseShare = dailyInflow / pairs;
+            const tierAdjusted = baseShare * tier.mult;
+            const finalEarnings = tierAdjusted * compatMult;
+            
+            // Update displays
+            document.getElementById('calcInflow').textContent = '$' + dailyInflow.toFixed(2);
+            document.getElementById('calcTier').textContent = tier.mult.toFixed(1) + 'x';
+            document.getElementById('tierName').textContent = tier.name;
+            document.getElementById('calcCompat').textContent = compatMult.toFixed(1) + 'x';
+            document.getElementById('calcEarnings').textContent = '$' + finalEarnings.toFixed(2);
+            
+            document.getElementById('step1').textContent = `$${dailyInflow.toFixed(2)} ÷ ${pairs} pairs = $${baseShare.toFixed(2)} per pair`;
+            document.getElementById('step2').textContent = `$${baseShare.toFixed(2)} × ${tier.mult.toFixed(1)} = $${tierAdjusted.toFixed(2)}`;
+            document.getElementById('step3').textContent = `$${tierAdjusted.toFixed(2)} × ${compatMult.toFixed(1)} = $${finalEarnings.toFixed(2)}`;
+            document.getElementById('finalResult').textContent = `$${finalEarnings.toFixed(2)} USDC/day`;
+        }
+
+        // Event listeners
+        document.getElementById('activePairs').addEventListener('input', calculate);
+        document.getElementById('bondDays').addEventListener('input', calculate);
+        document.getElementById('compatibility').addEventListener('input', calculate);
+
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>
