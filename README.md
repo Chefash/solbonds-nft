@@ -90,7 +90,8 @@ Result → 0–100% score that directly affects your daily earnings.
 ## 📹 Demo & Links
 | Resource      | Link                                                  |
 |-----------------|----------------------------------------------------------|
-| Live App        | (https://solbonds-nft.vercel.app/)                       |
+| Live App        | https://solbonds-nft.vercel.app/                      |
+| Demo Video      | https://youtu.be/O1xdvwEUasg                     |
 | GitHub          | https://github.com/Chefash/solbonds-nft                     |
 | Twitter         | @solbondsNFT                                             |
 | Discord         | https://discord.gg/zF2edcJNCJ                         |
